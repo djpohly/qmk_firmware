@@ -103,6 +103,8 @@ bool process_tapping(keyrecord_t *keyp)
                  */
                 else if (IS_RELEASED(event) && waiting_buffer_typed(event)) {
                     debug("Tapping: End. No tap. Interfered by typing key\n");
+                    // set interrupted flag when other key preesed during tapping
+                    tapping_key.tap.interrupted = true;
                     process_record(&tapping_key);
                     tapping_key = (keyrecord_t){};
                     debug_tapping_key();
@@ -135,10 +137,6 @@ bool process_tapping(keyrecord_t *keyp)
                     return true;
                 }
                 else {
-                    // set interrupted flag when other key preesed during tapping
-                    if (event.pressed) {
-                        tapping_key.tap.interrupted = true;
-                    }
                     // enqueue
                     return false;
                 }
