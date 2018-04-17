@@ -36,6 +36,10 @@ static void debug_tapping_key(void);
 static void debug_waiting_buffer(void);
 
 
+/** \brief Action Tapping Process
+ *
+ * FIXME: Needs doc
+ */
 void action_tapping_process(keyrecord_t record)
 {
     if (process_tapping(&record)) {
@@ -70,7 +74,7 @@ void action_tapping_process(keyrecord_t record)
 }
 
 
-/* Tapping
+/** \brief Tapping
  *
  * Rule: Tap key is typed(pressed and released) within TAPPING_TERM.
  *       (without interfering by typing other key)
@@ -261,7 +265,7 @@ bool process_tapping(keyrecord_t *keyp)
                 return true;
             }
         } else {
-            // FIX: process_aciton here?
+            // FIX: process_action here?
             // timeout. no sequential tap.
             debug("Tapping: End(Timeout after releasing last tap): ");
             debug_event(event); debug("\n");
@@ -275,6 +279,7 @@ bool process_tapping(keyrecord_t *keyp)
         if (event.pressed && is_tap_key(event.key)) {
             debug("Tapping: Start(Press tap key).\n");
             tapping_key = *keyp;
+            process_record_tap_hint(&tapping_key);
             waiting_buffer_scan_tap();
             debug_tapping_key();
             return true;
@@ -286,8 +291,9 @@ bool process_tapping(keyrecord_t *keyp)
 }
 
 
-/*
- * Waiting buffer
+/** \brief Waiting buffer enq
+ *
+ * FIXME: Needs docs
  */
 bool waiting_buffer_enq(keyrecord_t record)
 {
@@ -307,12 +313,20 @@ bool waiting_buffer_enq(keyrecord_t record)
     return true;
 }
 
+/** \brief Waiting buffer clear
+ *
+ * FIXME: Needs docs
+ */
 void waiting_buffer_clear(void)
 {
     waiting_buffer_head = 0;
     waiting_buffer_tail = 0;
 }
 
+/** \brief Waiting buffer typed
+ *
+ * FIXME: Needs docs
+ */
 bool waiting_buffer_typed(keyevent_t event)
 {
     for (uint8_t i = waiting_buffer_tail; i != waiting_buffer_head; i = (i + 1) % WAITING_BUFFER_SIZE) {
@@ -323,6 +337,10 @@ bool waiting_buffer_typed(keyevent_t event)
     return false;
 }
 
+/** \brief Waiting buffer has anykey pressed
+ *
+ * FIXME: Needs docs
+ */
 __attribute__((unused))
 bool waiting_buffer_has_anykey_pressed(void)
 {
@@ -332,7 +350,10 @@ bool waiting_buffer_has_anykey_pressed(void)
     return false;
 }
 
-/* scan buffer for tapping */
+/** \brief Scan buffer for tapping
+ *
+ * FIXME: Needs docs
+ */
 void waiting_buffer_scan_tap(void)
 {
     // tapping already is settled
@@ -356,14 +377,19 @@ void waiting_buffer_scan_tap(void)
 }
 
 
-/*
- * debug print
+/** \brief Tapping key debug print
+ *
+ * FIXME: Needs docs
  */
 static void debug_tapping_key(void)
 {
     debug("TAPPING_KEY="); debug_record(tapping_key); debug("\n");
 }
 
+/** \brief Waiting buffer debug print
+ *
+ * FIXME: Needs docs
+ */
 static void debug_waiting_buffer(void)
 {
     debug("{ ");
