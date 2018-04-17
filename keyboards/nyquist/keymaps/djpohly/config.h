@@ -38,4 +38,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
 
+#undef TAPPING_TERM
+#define TAPPING_TERM 500
+#define PERMISSIVE_HOLD
+#undef IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_FORCE_HOLD
+
 #endif
