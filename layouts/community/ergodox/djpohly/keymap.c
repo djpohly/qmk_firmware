@@ -44,11 +44,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		DEBUG,  KC_6,  KC_7,      KC_8,      KC_9,   KC_0,   KC_BSPC,
 #ifdef DJP_QWERTY
 		KC_BSPC, KC_Y,  KC_U,      KC_I,      KC_O,   KC_P,   KC_LBRACKET,
-		         KC_H,  KC_J,      KC_K,      KC_L,   KC_SCOLON,   CTL_T(KC_QUOTE),
+		         KC_H,  KC_J,      KC_K,      KC_L,   KC_SCOLON,   KC_QUOTE,
 		KC_NO,   KC_N,  KC_M,      KC_COMMA,  KC_DOT, KC_SLASH,   SFT_T(S(KC_RBRACKET)),
 #else
 		KC_BSPC, KC_F,  KC_G,      KC_C,      KC_R,   KC_L,   KC_SLASH,
-		         KC_D,  KC_H,      KC_T,      KC_N,   KC_S,   CTL_T(KC_MINUS),
+		         KC_D,  KC_H,      KC_T,      KC_N,   KC_S,   KC_MINUS,
 		KC_DELT, KC_B,  KC_M,      KC_W,      KC_V,   KC_Z,   SFT_T(S(KC_EQUAL)),
 #endif
 		           MO(SYMBNUM), MO(KEYNAV),  KC_NO,  KC_NO,  KC_NO,
